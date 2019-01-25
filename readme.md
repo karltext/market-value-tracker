@@ -1,14 +1,6 @@
 # Market Skills Tracker
 
-## Environment setup
-
-Make sure `virtualenv` is installed
-
-```
-> virtualenv env
-> env\Scripts\activate
-(env) >
-```
+# Market Value Tracker
 
 
 ## Research Links
