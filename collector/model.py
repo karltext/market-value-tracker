@@ -1,15 +1,16 @@
 import os
 
-import mysql.connector
+from mysql.connector import connection
 from dotenv import load_dotenv
 load_dotenv()
 
-dbconfig = {
+config = {
     'host': os.getenv('DB_HOST'),
     'user': os.getenv('DB_USER'),
     'password': os.getenv('DB_PASS'),
-    'database': os.getenv('DB_NAME')
+    'database': os.getenv('DB_NAME'),
+    'raise_on_warnings': True
 }
 
-con = mysql.connector.connect(dbconfig)
-
+con = connection.MySQLConnection(**config)
+con.close()
