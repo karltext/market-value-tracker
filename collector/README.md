@@ -10,7 +10,7 @@ $ env\Scripts\activate
 
 Install requirements.
 ```
-$ pip install -r requirements.txt
+$ pip install -r collector/requirements.txt
 ```
 
 ### Data Collection
