@@ -40,7 +40,7 @@ def parse_table(soup):
             if not row:
                 continue
             if len(row) < 8:
-                row.append('')
+                row.append(0)
             yield row
 
 def parse_row(row):
