@@ -1,15 +1,18 @@
 CREATE SCHEMA `market_tracker` ;
 
 CREATE TABLE `market_tracker`.`roles` (
-  `id` INT NOT NULL,
-  `skill` VARCHAR(45) NOT NULL,
-  `rank` INT NULL,
-  `rank_change` INT NULL,
-  `median_salary` DOUBLE NULL,
-  `median_change` DOUBLE NULL,
-  `historical_ads` INT NULL,
-  `ad_percentage` DOUBLE NULL,
-  `live_vacancies` INT NULL,
-  `updated` DATE NULL,
-  PRIMARY KEY (`id`, `skill`));
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `skill` varchar(45) NOT NULL,
+  `rank` int(11) NOT NULL,
+  `rank_change` int(11) NOT NULL,
+  `median_salary` decimal(10,0) NOT NULL,
+  `median_change` decimal(10,0) NOT NULL,
+  `historical_ads` int(11) NOT NULL,
+  `ad_percentage` decimal(10,0) NOT NULL,
+  `live_vacancies` int(11) NOT NULL,
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`,`skill`)
+)
+
+  
   
