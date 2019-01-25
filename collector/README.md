@@ -22,6 +22,8 @@ $ python collector/scraper.py --out=data/data.csv
 ### Initialise database
 Run the mysql script in `model/schema.sql` to initialise the database -- you can just copy and paste the queries into the mysql command prompt.
 
+Create a `.env` file in the `collector` directory with your database credentials stored in the format described in the `.env.example` file.
+
 ### Insert Data into Database
 
 Insert the data in the mysql database by running.
