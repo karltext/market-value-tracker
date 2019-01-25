@@ -31,7 +31,7 @@ Insert the data in the mysql database by running.
 $ python collector/model.py
 ```
 
-Viola! you should be sorted for the day.
+Voila! you should be sorted for the day.
 
 
 
