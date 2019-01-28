@@ -1,6 +1,4 @@
-
-IF NOT EXISTS CREATE SCHEMA `market_tracker` ;
-
+CREATE SCHEMA `market_tracker`;
 CREATE TABLE `market_tracker`.`roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `skill` varchar(100) NOT NULL,
