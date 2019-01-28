@@ -1,4 +1,6 @@
 env/
-data/
+data/*
 !data/README.md
 .env
+
+.ipynb_checkpoints
