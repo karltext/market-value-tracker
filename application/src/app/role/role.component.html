@@ -1,0 +1,28 @@
+<h1>Role Input</h1>
+
+<table>
+  <tr>
+    <th>Role Id</th>
+    <th>Skill</th>
+    <th>Rank</th>
+    <th>Rank Change</th>
+    <th>Median Salary</th>
+    <th>Median Change</th>
+    <th>Past Ads</th>
+    <th>Ad Percentage</th>
+    <th>Live Ads</th>
+    <th>Last Updated</th>
+  </tr>
+  <tr *ngFor="let r of roles; let i=index">
+    <td>{{r.id}}</td>
+    <td>{{r.skill}}</td>
+    <td>{{r.rank}}</td>
+    <td>{{r.rank_change}}</td>
+    <td>{{r.median_salary}}</td>
+    <td>{{r.median_change}}</td>
+    <td>{{r.historical_ads}}</td>
+    <td>{{r.ad_percentage}}</td>
+    <td>{{r.live_vacancies}}</td>
+    <td>{{r.updated}}</td>
+  </tr>
+</table>
