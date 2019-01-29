@@ -13,20 +13,23 @@ config = {
     'raise_on_warnings': True
 }
 
-add_role = ("INSERT INTO `market_tracker`.`roles` "
-            "(`skill`, `rank`, `rank_change`, `median_salary`, " 
+add_role = ("INSERT INTO `market_tracker`.`vt_role` "
+            "(`skill`, `role_rank`, `rank_change`, `median_salary`, " 
             "`median_change`, `historical_ads`, `ad_percentage`, `live_vacancies`) "
             "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
 
 cnx = connection.MySQLConnection(**config)
 cur = cnx.cursor()
 
-with open('data.csv', newline='') as fp:
+with open('data/data.csv', newline='') as fp:
     reader = csv.reader(fp)
+    print('adding rows...')
     for row in reader:
-        print(row)
         cur.execute(add_role, row)
 cnx.commit()
+print('commited changes...')
 
 cur.close()
 cnx.close()
+print('Done!')
+
