@@ -1,4 +1,4 @@
-package com.mastek.valuetracker;
+package com.mastek.valuetracker.role;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +14,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 
 @Component
-@Path("/roles/")
-public class RoleAccessAPI{
+@Path("/roles")
+public class RoleAccessAPI {
     RoleJPARepository repository;
     public RoleJPARepository getRepository() {
         return repository;
@@ -60,9 +60,4 @@ public class RoleAccessAPI{
 		}
         return roleList;
     }
-    
-    public Role add(Role i) {
-        return getRepository().save(i);
-    }
-    
 }

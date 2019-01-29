@@ -1,4 +1,4 @@
-package com.groupproject.RoleLog;
+package com.mastek.valuetracker.rolelog;
 
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;

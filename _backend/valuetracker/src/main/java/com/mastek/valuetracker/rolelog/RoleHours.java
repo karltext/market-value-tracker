@@ -1,4 +1,4 @@
-package com.groupproject.RoleLog;
+package com.mastek.valuetracker.rolelog;
 
 
 import java.sql.Timestamp;
@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 
 @Entity
-@Table(name="RoleLog")
+@Table(name="vt_role_hours")
 @XmlRootElement //Declares the automatic mapping of java to XML/JSON 
 public class RoleHours {
 	

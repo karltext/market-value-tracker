@@ -1,4 +1,4 @@
-package com.mastek.valuetracker;
+package com.mastek.valuetracker.role;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +7,7 @@ import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name="roles")
+@Table(name="vt_role")
 @XmlRootElement
 public class Role {
 

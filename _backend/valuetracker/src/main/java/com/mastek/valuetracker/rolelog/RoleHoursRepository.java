@@ -1,4 +1,4 @@
-package com.groupproject.RoleLog;
+package com.mastek.valuetracker.rolelog;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
