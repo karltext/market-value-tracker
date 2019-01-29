@@ -1,0 +1,14 @@
+package com.mastek.valuetracker;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ValuetrackerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ValuetrackerApplication.class, args);
+	}
+
+}
+
