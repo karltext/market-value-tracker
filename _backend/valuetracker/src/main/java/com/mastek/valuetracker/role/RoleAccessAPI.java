@@ -28,7 +28,7 @@ public class RoleAccessAPI {
     @Path("/list")
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public Iterable<Role> listRoles(){
+	public Iterable<Role> listRoles() {
 		return getRepository().findAll();
 	}
     
