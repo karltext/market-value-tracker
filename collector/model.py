@@ -21,7 +21,7 @@ add_role = ("INSERT INTO `market_tracker`.`roles` "
 cnx = connection.MySQLConnection(**config)
 cur = cnx.cursor()
 
-with open('data/data.csv', newline='') as fp:
+with open('data.csv', newline='') as fp:
     reader = csv.reader(fp)
     for row in reader:
         print(row)

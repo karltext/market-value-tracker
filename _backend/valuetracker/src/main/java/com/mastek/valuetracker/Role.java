@@ -7,7 +7,7 @@ import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name="market_role")
+@Table(name="roles")
 @XmlRootElement
 public class Role {
 
