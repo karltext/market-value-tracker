@@ -17,7 +17,7 @@
     </tr>
     <tr *ngFor="let r of roleLogs; let i=index">
       <td>{{r.role}}</td>
-      <td>{{r.Hours}}</td>
+      <td>{{r.hours}}</td>
       <td><button (click)="deleteRoleLog(r.inputID)">X</button></td>
     </tr>
   </table>

@@ -15,7 +15,7 @@ export class ProjectManagerComponent implements OnInit {
   constructor(private roleLogService: RoleLogService,
               private route: ActivatedRoute) { }
 
-              addNewTraining(newRoleLog:RoleLog){
+              addNewRoleLog(newRoleLog:RoleLog){
                 this.roleLogService.addNewRoleLog(newRoleLog).subscribe(
                   res=>{
                     this.roleLogService.getRoleLog().subscribe(
