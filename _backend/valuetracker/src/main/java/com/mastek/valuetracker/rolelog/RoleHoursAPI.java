@@ -28,7 +28,7 @@ public class RoleHoursAPI {
 		this.repository = repository;
 	}
 	
-	@Path("/RoleHours")
+	@Path("/list")
 	@GET
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 	public Iterable<RoleHours> listRoleHours(){
