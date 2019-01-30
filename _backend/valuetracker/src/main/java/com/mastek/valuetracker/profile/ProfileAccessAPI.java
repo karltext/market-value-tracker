@@ -17,7 +17,7 @@ import com.mastek.valuetracker.profile.ProfileJPARepository;
 import com.mastek.valuetracker.role.Role;
 
 @Component
-@Path("/profile")
+@Path("/profiles")
 public class ProfileAccessAPI {
 	
 	
