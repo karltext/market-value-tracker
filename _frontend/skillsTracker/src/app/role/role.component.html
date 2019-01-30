@@ -1,0 +1,39 @@
+<div *ngIf="!roles">
+  Error: Could not load roles
+</div>
+<!-- https://www.itjobswatch.co.uk/jobs/uk/agile%20software%20development.do -->
+<div *ngIf="roles" class="roles-container">
+  <div class="table-head role-row">
+    <div class="role-column role-head">skill</div>
+    <div class="role-column role-head">Rank</div>
+    <div class="role-column role-head">Rank change</div>
+    <div class="role-column role-head">Median salary</div>
+    <div class="role-column role-head">Median % change</div>
+    <div class="role-column role-head">Historical ads</div>
+    <div class="role-column role-head">Ad %</div>
+    <div class="role-column role-head">Live vacancies</div>
+  </div>
+  <div class="inner-container">
+    <div *ngFor="let role of roles" class="roles">
+      <div class="role-row">
+        <div class="role-column">
+          <a target="_blank" href="https://www.itjobswatch.co.uk/jobs/uk/{{ role.skill }}.do">
+            {{ role.skill }}
+          </a>
+        </div>
+        <div class="role-column">{{ role.role_rank }}</div>
+        <div class="role-column">
+          <span *ngIf="role.rank_change > 0">😃</span>
+          <span *ngIf="role.rank_change < 0">😰</span>
+          <span *ngIf="role.rank_change == 0">😐</span>
+          {{ role.rank_change }}
+        </div>
+        <div class="role-column">£{{ role.median_salary | number}}</div>
+        <div class="role-column">{{ role.median_change }}%</div>
+        <div class="role-column">{{ role.historical_ads | number}}</div>
+        <div class="role-column">{{ role.ad_percentage }}%</div>
+        <div class="role-column">{{ role.live_vacancies | number}}</div>
+      </div>
+    </div>
+  </div>
+</div>

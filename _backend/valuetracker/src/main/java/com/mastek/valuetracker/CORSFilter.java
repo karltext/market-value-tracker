@@ -9,15 +9,17 @@ import javax.ws.rs.ext.Provider;
 
 import org.springframework.stereotype.Component;
 
-@Provider
-@Component
-public class CORSFilter implements ContainerResponseFilter{
+@Provider // To ensure the filter is applied for the web service environment
+@Component// To ensure the filter is managed by the spring application 
+public class CORSFilter implements ContainerResponseFilter {
 
 	@Override
-	public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext)
+	public void filter(
+			ContainerRequestContext requestContext, ContainerResponseContext responseContext)
 			throws IOException {
 		responseContext.getHeaders().add("Access-Control-Allow-Origin", "*");
 		responseContext.getHeaders().add("Access-Control-Allow-Headers", "Origin, X-Requested-with, Content-type, Accept");
 		responseContext.getHeaders().add("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
 	}
+
 }
