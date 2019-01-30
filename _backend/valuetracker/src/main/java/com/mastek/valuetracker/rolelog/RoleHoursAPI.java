@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-@Path("/RoleLog/")
+@Path("/rolehours")
 public class RoleHoursAPI {
 	
 	RoleHoursRepository repository;
