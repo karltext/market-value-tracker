@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaderResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { RoleLog } from './roleLog';
 import { Observable } from 'rxjs';
 
@@ -8,13 +8,33 @@ import { Observable } from 'rxjs';
 })
 export class RoleLogService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private httpsvc: HttpClient) { }
 
   rootURL = "http://localhost:9900/RoleLog"
 
-  getRoleLogList(inputID): Observable<RoleLog[]> {
-    const url = this.rootURL + "/list"
-    return this.http.get<RoleLog[]>(url)
+
+
+  getRoleLog():Observable<RoleLog[]>{
+    return this.httpsvc.get<RoleLog[]>(this.rootURL+"/list")
+   }
+
+  addNewRoleLog(newRoleLog:RoleLog):Observable<any>{
+    const httpOpts = {
+      headers: new HttpHeaders(
+        {'Content-Type' : 'application/x-www-form-urlencoded;charset=UTF-8'})
+    }
+
+    var reqBody = "role="+newRoleLog.role + "&hours="+newRoleLog.hours
+
+    return this.httpsvc.post<RoleLog>(
+      this.rootURL+"/register", reqBody, httpOpts)
+   }
+
+   deleteRoleLog(inputID:number):Observable<RoleLog>{
+    return this.httpsvc.request<RoleLog>('DELETE',this.rootURL+"/delete",
+    {headers: new HttpHeaders({'Content-Type': 'text/plain'}), 
+    body: inputID
+    })
   }
 
 }

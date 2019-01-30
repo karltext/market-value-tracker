@@ -1,18 +1,5 @@
-<h1>Market Value Tracker</h1>
-
-<h3>Hi Jimmy</h3>
 
 
-<table>
-    <tr>
-      <th>Role / Skill</th>
-      <th>Hours</th>
-    </tr>
-    <tr *ngFor="let r of roleLog; let i=index">
-      <td>{{r.role}}</td>
-      <td>{{r.Hours}}</td>
-    </tr>
-  </table>
   <form (submit)="addNewRoleLog({role:rol.value, hours:hrs.value})">
     <tr>
       <td><input placeholder="Role / Skill" #rol></td>
@@ -20,3 +7,17 @@
       <td><input type="submit" value="Add"></td>
     </tr>
   </form>
+
+  <br><br>
+
+  <table>
+    <tr>
+      <th>Role / Skill</th>
+      <th>Hours</th>
+    </tr>
+    <tr *ngFor="let r of roleLogs; let i=index">
+      <td>{{r.role}}</td>
+      <td>{{r.Hours}}</td>
+      <td><button (click)="deleteRoleLog(r.inputID)">X</button></td>
+    </tr>
+  </table>
