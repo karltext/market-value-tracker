@@ -28,7 +28,6 @@ export class RoleComponent implements OnInit {
   getRolesByName(role:String) {
     this.roleService.getRolesByName(role)
       .subscribe(res => {
-        console.log(this.fltRoles)
         this.fltRoles = res
       })
   }
