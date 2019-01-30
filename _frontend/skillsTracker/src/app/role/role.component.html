@@ -37,3 +37,36 @@
     </div>
   </div>
 </div>
+
+<form (submit)="getRolesByName(prole.value)">
+  <table>
+  <tr>
+      <td><input placeholder="Enter a Role" #prole></td>
+
+      <td><input class="btn btn-default" type="submit" value="Filter"></td> 
+    </tr>
+  </table>
+  </form>
+
+  <table class="table table-dark">
+    <tr>
+        <th>Skill</th>
+        <th>Rank</th>
+        <th>Rank Change</th>
+        <th>Median Salary</th>
+        <th>Median % Change</th>
+        <th>Historical Ads</th>
+        <th>Ad %</th>
+        <th>Live Vacancies</th>
+      </tr>
+    <tr *ngFor="let rs of fltRoles;">
+        <td>{{rs.skill}}</td>
+        <td>{{rs.role_rank}}</td>
+        <td>{{rs.rank_change}}</td>
+        <td>{{rs.median_salary}}</td>
+        <td>{{rs.median_change}}</td>
+        <td>{{rs.historical_ads}}</td>
+        <td>{{rs.ad_percentage}}</td>
+        <td>{{rs.live_vacancies}}</td>
+      </tr>
+</table>
