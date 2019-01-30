@@ -1,5 +1,7 @@
 package com.mastek.valuetracker.profile;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,11 +16,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Profile {
 
-	@FormParam("profileId")
 	int profileId;
 	
 	@FormParam("username")
 	String username;
+	
+	@FormParam("salary")
+	double salary;
+	
+	@FormParam("profileRank")
+	int profileRank;
+	
+	Set<Skill> skills;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -36,6 +45,19 @@ public class Profile {
 		this.username = username;
 	}
 	
+	public double getSalary() {
+		return salary;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	
+	public int getProfileRank() {
+		return profileRank;
+	}
+	public void setProfileRank(int profileRank) {
+		this.profileRank = profileRank;
+	}
 	@Override
 	public String toString() {
 		return "Profile [profileId=" + profileId + ", username=" + username + "]";

@@ -11,7 +11,7 @@ export class ProfileService {
 
   constructor(private http: HttpClient) { }
 
-  rootURL = "http://localhost:9900/profile"
+  rootURL = "http://localhost:9900/profiles"
 
   getProfile(profileId: number): Observable<Profile> {
     const url = this.rootURL + "/find?profileId=" + profileId
