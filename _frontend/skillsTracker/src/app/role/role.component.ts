@@ -10,6 +10,7 @@ import { Role } from '../role';
 export class RoleComponent implements OnInit {
 
   roles: Role[]
+  fltRoles: Role[]
 
   constructor(private roleService: RoleService) { }
 
@@ -21,6 +22,13 @@ export class RoleComponent implements OnInit {
     this.roleService.getRolesList()
       .subscribe(res => {
         this.roles = res.slice(0, 100)
+      })
+  }
+
+  getRolesByName(role:String) {
+    this.roleService.getRolesByName(role)
+      .subscribe(res => {
+        this.roles = res
       })
   }
 
