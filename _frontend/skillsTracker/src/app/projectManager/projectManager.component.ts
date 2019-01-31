@@ -15,16 +15,29 @@ export class ProjectManagerComponent implements OnInit {
   constructor(private roleLogService: RoleLogService,
               private route: ActivatedRoute) { }
 
-  ngOnInit() {
-    const inputID = parseInt(this.route.snapshot.paramMap.get('inputID'))
-    this.roleLogService.getRoleLogList(inputID)
+              addNewRoleLog(newRoleLog:RoleLog){
+                this.roleLogService.addNewRoleLog(newRoleLog).subscribe(
+                  res=>{
+                    this.roleLogService.getRoleLog().subscribe(
+                  res=>{this.roleLogs=res}
+                )
+             }
+            )
+             }
+          
+             deleteRoleLog(index:number){
+              this.roleLogService.deleteRoleLog(index).subscribe(
+                res=>{
+                  this.roleLogService.getRoleLog().subscribe(
+                res=>{this.roleLogs=res}
+              )
+           }
+          )
+           }
+          
+            ngOnInit() {
+              this.roleLogService.getRoleLog().subscribe(
+                res=>{this.roleLogs=res}
+              )
+            }
   }
-
-  getRoleLog(inputID: number) {
-    this.roleLogService.getRoleLogList(inputID)
-      .subscribe(res => {
-        this.roleLogs = res
-      })
-  }
-
-}

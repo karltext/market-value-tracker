@@ -1,11 +1,15 @@
-    <form (submit)="getRolesByName(prole.value)">
-        <table>
-        <tr>
-            <td><input placeholder="Filter Roles by Skill" #prole></td>
-            <td><input class="btn btn-default" type="submit" value="Filter"></td> 
-          </tr>
-        </table>
-        </form>
+<form (submit)="getRolesByName(prole.value)">
+  <table>
+    <tr>
+      <td>
+        <input placeholder="Filter Roles by Skill" #prole>
+      </td>
+      <td>
+        <input class="btn btn-default" type="submit" value="Filter">
+      </td>
+    </tr>
+  </table>
+</form>
 <div *ngIf="!roles">
   Error: Could not load roles
 </div>
