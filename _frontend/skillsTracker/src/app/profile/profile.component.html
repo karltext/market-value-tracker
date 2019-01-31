@@ -1,11 +1,16 @@
 
 <div class="container">
-  <div *ngIf="profile">
+  <div>
     <div class="profile-info">
       <div><label>Name: </label>{{ profile.username }}</div>
       <div><label>Salary: </label>£{{ profile.salary | number }}</div>
-      <div><label>Skill count: </label>{{ roles.length }}</div>
-      <div><label>Rank: </label>#1</div>
+      <div *ngIf="didLoadRoles"><label>Skill count: </label>{{ roles.length }}</div>
+      <div><label>Rank: </label>{{ profile.profile_rank }}</div>
+    </div>
+    <div *ngIf="didLoadRoles" class="profile-info">
+      <div><label>Expected Salary: </label>£{{ avgSalary | number }}</div>
+      <div><label>Max Salary: </label>£{{ maxSalary | number }}</div>
+      <div><label>% of Market Salary: </label>{{ percMarketSalary | number }}%</div>
     </div>
     <h4>My Skills:</h4>
     <div class="role-row">
@@ -39,6 +44,11 @@
         <div class="role-column">{{ role.live_vacancies | number}}</div>
       </div>
   </div>
+  <div class="new-skill">
+    <form (submit)="addRoleToProfile(profile.profileId, roleId.value)">
+      <input class="form-control" type="number" #roleId>
+      <button class="btn btn-success" type="submit">Submit</button>
+    </form>
   </div>
   <div *ngIf="!profile">
     Error: Could not find user profile!
