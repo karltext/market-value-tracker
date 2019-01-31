@@ -34,6 +34,10 @@ export class ProjectManagerComponent implements OnInit {
            }
           )
            }
+
+            calculateCost(){
+              
+            }
           
             ngOnInit() {
               this.roleLogService.getRoleLog().subscribe(

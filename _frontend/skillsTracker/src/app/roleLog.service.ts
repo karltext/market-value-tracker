@@ -12,8 +12,6 @@ export class RoleLogService {
 
   rootURL = "http://localhost:9900/RoleLog"
 
-
-
   getRoleLog():Observable<RoleLog[]>{
     return this.httpsvc.get<RoleLog[]>(this.rootURL+"/list")
    }
@@ -36,5 +34,7 @@ export class RoleLogService {
     body: inputID
     })
   }
+
+  
 
 }
