@@ -10,7 +10,7 @@ export class RoleLogService {
 
   constructor(private httpsvc: HttpClient) { }
 
-  rootURL = "http://localhost:9900/rolehours"
+  rootURL = "http://localhost:9900/RoleLog"
 
   getRoleLog():Observable<RoleLog[]>{
     return this.httpsvc.get<RoleLog[]>(this.rootURL+"/list")
