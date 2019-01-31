@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Profile } from './profile';
 import { Skill } from './Skill';
+import { Role } from './role';
 
 
 @Injectable({
@@ -19,8 +20,8 @@ export class ProfileService {
     return this.http.get<Profile>(url)
   }
 
-  getProfileSkills(profileId: number): Observable<Skill[]> {
-    const url = this.rootURL + "/" + profileId + "/skills"
+  getProfileSkills(profileId: number): Observable<Role[]> {
+    const url = this.rootURL + "/" + profileId + "/roles"
     return this.http.get<Skill[]>(url)
   }
 }

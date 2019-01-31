@@ -3,6 +3,7 @@ import { ProfileService } from '../profile.service';
 import { ActivatedRoute } from '@angular/router';
 import { Profile } from '../profile';
 import { Skill } from '../Skill';
+import { Role } from '../role';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +13,7 @@ import { Skill } from '../Skill';
 export class ProfileComponent implements OnInit {
 
   profile: Profile
-  skills: Skill[]
+  roles: Role[]
 
   constructor(private profileService: ProfileService,
               private route: ActivatedRoute) { }
@@ -31,9 +32,9 @@ export class ProfileComponent implements OnInit {
   }
 
   getProfileSkills(profileId: number) {
-    this.profileService.getProfileSkills(profileId)
+    this.profileService.getProfileRoles(profileId)
     .subscribe(res => {
-      this.skills = res
+      this.roles = res
     })
   }
 

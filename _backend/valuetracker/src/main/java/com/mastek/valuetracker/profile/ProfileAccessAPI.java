@@ -16,10 +16,10 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.mastek.booktraining.Person;
-import com.mastek.booktraining.Training;
 import com.mastek.valuetracker.profile.Profile;
 import com.mastek.valuetracker.profile.ProfileJPARepository;
+import com.mastek.valuetracker.role.Role;
+import com.mastek.valuetracker.role.RoleJPARepository;
 
 @Component
 @Path("/profiles")
@@ -27,7 +27,7 @@ public class ProfileAccessAPI {
 	
 	
 	ProfileJPARepository repository;
-	SkillJPARepository skillRepository;
+	RoleJPARepository roleRepository;
 	
     public ProfileJPARepository getRepository() {
         return repository;
@@ -38,12 +38,12 @@ public class ProfileAccessAPI {
     }
     
     
-    public SkillJPARepository getSkillRepository() {
-        return skillRepository;
+    public RoleJPARepository getRoleRepository() {
+        return roleRepository;
     }
     @Autowired
-    public void setSkillRepository(SkillJPARepository repository) {
-        this.skillRepository = repository;
+    public void setRoleRepository(RoleJPARepository repository) {
+        this.roleRepository = repository;
     }
     
    	@GET
@@ -68,39 +68,30 @@ public class ProfileAccessAPI {
         return getRepository().save(p);
     }
     
-    
-    @POST
-    @Path("/skill/register")
-    @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
-    public Skill registerProfile(@BeanParam Skill s) {
-        return getSkillRepository().save(s);
-    }
-   
 	@POST
-	@Path("/skill/add")
+	@Path("/role/add")
 	@Transactional
 	@Consumes({MediaType.APPLICATION_FORM_URLENCODED})
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public Skill addSkillToProfile(@BeanParam Registration r) {
-		System.out.println("x" + r);
-		Skill s = getSkillRepository().findById(r.getSkillId()).get();
-		Profile p = getRepository().findById(r.getProfileId()).get();
-		if (!p.getSkills().contains(s)) {
-			p.getSkills().add(s);
+	public Role addSkillToProfile(@BeanParam Registration reg) {
+		System.out.println(reg + " " + reg.getRoleId());
+		Role r = getRoleRepository().findById(reg.getRoleId()).get();
+		Profile p = getRepository().findById(reg.getProfileId()).get();
+		if (!p.getRoles().contains(r)) {
+			p.getRoles().add(r);
 		}
 		getRepository().save(p);
-		return s;
+		return r;
 	}
 	
 	@GET
-	@Path("/{profileId}/skills")
+	@Path("/{profileId}/roles")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	@Transactional
-	public Set<Skill> getPersons(@PathParam("profileId") int profileId){
+	public Set<Role> getPersons(@PathParam("profileId") int profileId){
 		Profile p = getRepository().findById(profileId).get();
-		if (!p.getSkills().isEmpty()) {
-			return p.getSkills();
+		if (!p.getRoles().isEmpty()) {
+			return p.getRoles();
 		}
 		return null;
 	}
