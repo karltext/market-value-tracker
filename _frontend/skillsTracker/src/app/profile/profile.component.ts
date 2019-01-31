@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../profile.service';
 import { ActivatedRoute } from '@angular/router';
 import { Profile } from '../profile';
+import { Skill } from '../Skill';
 
 @Component({
   selector: 'app-profile',
@@ -11,6 +12,7 @@ import { Profile } from '../profile';
 export class ProfileComponent implements OnInit {
 
   profile: Profile
+  skills: Skill[]
 
   constructor(private profileService: ProfileService,
               private route: ActivatedRoute) { }
@@ -18,6 +20,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     const profileId = parseInt(this.route.snapshot.paramMap.get('profileId'))
     this.getProfile(profileId)
+    this.getProfileSkills(profileId)
   }
 
   getProfile(profileId: number) {
@@ -25,6 +28,13 @@ export class ProfileComponent implements OnInit {
       .subscribe(res => {
         this.profile = res
       })
+  }
+
+  getProfileSkills(profileId: number) {
+    this.profileService.getProfileSkills(profileId)
+    .subscribe(res => {
+      this.skills = res
+    })
   }
 
 }

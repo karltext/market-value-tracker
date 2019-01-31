@@ -4,44 +4,45 @@ import { ActivatedRoute } from '@angular/router';
 import { RoleLog } from '../roleLog';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './projectManager.component.html',
-  styleUrls: ['./projectManager.component.css']
+    selector: 'app-profile',
+    templateUrl: './projectManager.component.html',
+    styleUrls: ['./projectManager.component.css']
 })
 export class ProjectManagerComponent implements OnInit {
 
-  roleLogs: RoleLog[]
+    roleLogs: RoleLog[]
 
-  constructor(private roleLogService: RoleLogService,
-              private route: ActivatedRoute) { }
+    constructor(private roleLogService: RoleLogService,
+        private route: ActivatedRoute) { }
 
-              addNewRoleLog(newRoleLog:RoleLog){
-                this.roleLogService.addNewRoleLog(newRoleLog).subscribe(
-                  res=>{
-                    this.roleLogService.getRoleLog().subscribe(
-                  res=>{this.roleLogs=res}
+    ngOnInit() {
+        this.roleLogService.getRoleLog().subscribe(
+            res => { this.roleLogs = res }
+        )
+    }
+
+    addNewRoleLog(newRoleLog: RoleLog) {
+        this.roleLogService.addNewRoleLog(newRoleLog).subscribe(
+            res => {
+                this.roleLogService.getRoleLog().subscribe(
+                    res => { this.roleLogs = res }
+                )
+            }
+        )
+    }
+
+    deleteRoleLog(index: number) {
+        this.roleLogService.deleteRoleLog(index).subscribe(
+            res => {
+                this.roleLogService.getRoleLog().subscribe(
+                    res => { this.roleLogs = res }
                 )
              }
             )
              }
           
-             deleteRoleLog(index:number){
-              this.roleLogService.deleteRoleLog(index).subscribe(
-                res=>{
-                  this.roleLogService.getRoleLog().subscribe(
-                res=>{this.roleLogs=res}
-              )
-           }
-          )
-           }
 
             calculateCost(){
               
             }
-          
-            ngOnInit() {
-              this.roleLogService.getRoleLog().subscribe(
-                res=>{this.roleLogs=res}
-              )
-            }
-  }
+    }
