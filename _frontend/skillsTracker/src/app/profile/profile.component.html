@@ -1,6 +1,13 @@
 
 <div *ngIf="profile">
-  Hello {{ profile.username }}!
+  <h2>{{ profile.username }}!</h2>
+  <h4>Salary: {{ profile.salary }}</h4>
+  <div>
+    <h4>Skills:</h4>
+    <span *ngFor="let s of skills">
+      {{ s.skillName }}
+    </span>
+  </div>
 </div>
 <div *ngIf="!profile">
   Error: Could not find user profile!

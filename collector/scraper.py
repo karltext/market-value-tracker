@@ -18,14 +18,15 @@ import requests
 # https://www.crummy.com/software/BeautifulSoup/bs4/doc/
 from bs4 import BeautifulSoup
 
+import writers
+
 URL = 'https://www.itjobswatch.co.uk/default.aspx'
 
 def main():
     args = parse_args()
-    with open(args.out, 'w+', newline='') as csvfile:
-        writer = csv.writer(csvfile)
+    with args.writer(args.out) as w:
         for n in range(args.num):
-            parse_page(writer, n)
+            parse_page(w, n)
             
 def parse_page(writer, pagenum):
     data = getpage(pagenum)
@@ -75,6 +76,12 @@ def parse_args():
         '-n', '--num', help="number of pages", type=int, default=324)
     parser.add_argument(
         '-l', '--location', help="query location", type=str)
+    parser.add_argument(
+        '--writer', action='store_const', 
+        const=writers.CSVWriter, 
+        default=writers.DBWriter,
+        help='Write to csv (default: write to database)'
+    )
     return parser.parse_args()
 
 def cleanchars(string):
