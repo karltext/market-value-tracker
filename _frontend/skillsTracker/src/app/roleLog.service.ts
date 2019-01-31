@@ -10,13 +10,13 @@ export class RoleLogService {
 
   constructor(private httpsvc: HttpClient) { }
 
-  rootURL = "http://localhost:9900/RoleLog"
+  rootURL = "http://localhost:9900/rolehours"
 
-  getRoleLog(): Observable<RoleLog[]> {
-    return this.httpsvc.get<RoleLog[]>(this.rootURL + "/list")
-  }
+  getRoleLog():Observable<RoleLog[]>{
+    return this.httpsvc.get<RoleLog[]>(this.rootURL+"/list")
+   }
 
-  addNewRoleLog(newRoleLog: RoleLog): Observable<any> {
+  addNewRoleLog(newRoleLog:RoleLog):Observable<any>{
     const httpOpts = {
       headers: new HttpHeaders(
         {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' })
@@ -33,5 +33,7 @@ export class RoleLogService {
         body: inputID
       })
   }
+
+  
 
 }

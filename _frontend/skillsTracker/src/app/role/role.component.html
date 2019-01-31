@@ -1,11 +1,11 @@
-<form (submit)="getRolesByName(prole.value)">
+<form class="roleFilter" (submit)="getRolesByName(prole.value)">
   <table>
     <tr>
       <td>
         <input placeholder="Filter Roles by Skill" #prole>
       </td>
       <td>
-        <input class="btn btn-default" type="submit" value="Filter">
+         <button type="submit" class="btn btn-dark">Filter</button>
       </td>
     </tr>
   </table>

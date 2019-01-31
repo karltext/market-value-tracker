@@ -1,5 +1,6 @@
 
 
+<br>
   <form (submit)="addNewRoleLog({role:rol.value, hours:hrs.value})">
     <tr>
       <td><input placeholder="Role / Skill" #rol></td>
@@ -8,7 +9,7 @@
     </tr>
   </form>
 
-  <br><br>
+  <br>
 
   <table>
     <tr>
@@ -21,3 +22,5 @@
       <td><button (click)="deleteRoleLog(r.inputID)">X</button></td>
     </tr>
   </table>
+  
+  <td><button (click)="ReturnCost">Calculate Cost</button></td>

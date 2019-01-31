@@ -20,8 +20,8 @@ export class ProfileService {
     return this.http.get<Profile>(url)
   }
 
-  getProfileSkills(profileId: number): Observable<Role[]> {
+  getProfileRoles(profileId: number): Observable<Role[]> {
     const url = this.rootURL + "/" + profileId + "/roles"
-    return this.http.get<Skill[]>(url)
+    return this.http.get<Role[]>(url)
   }
 }
