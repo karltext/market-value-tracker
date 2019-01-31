@@ -1,9 +1,18 @@
-table{
-    margin: auto;
-    padding: 10px;
+.roles-container{
+    margin-top: 80px;
 }
 
-.roleFilter{
-    padding: 20px;
-    background-color: #434A50;
+.head{
+    width: 100%;
+   top: 40px;
+   left: 0;
+    position: fixed;
+}
+
+nav{
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    top: 0;
+    left: 0;
 }
