@@ -24,28 +24,28 @@ public interface RoleJPARepository extends CrudRepository<Role,Integer>{
 				+ " OR r.skill LIKE :skill", nativeQuery=true)
 	public List<Role> findAggregateByRole(@Param("skill") String skill);
 	
-	@Query(value="SELECT * FROM `vt_role` ORDER BY `skill` ASC LIMIT 100;", nativeQuery=true)
+	@Query(value="SELECT * FROM `vt_role` ORDER BY `skill` ASC;", nativeQuery=true)
 	public List<Role> listAllBySkill();
 	
-	@Query(value="SELECT * FROM `vt_role` ORDER BY `role_rank` ASC LIMIT 100;", nativeQuery=true)
+	@Query(value="SELECT * FROM `vt_role` ORDER BY `role_rank`;", nativeQuery=true)
 	public List<Role> listAllByRank();
 	
-	@Query(value="SELECT * FROM `vt_role` ORDER BY `rank_change` ASC LIMIT 100;", nativeQuery=true)
+	@Query(value="SELECT * FROM `vt_role` ORDER BY `rank_change`;", nativeQuery=true)
 	public List<Role> listAllByRankChange();
 	
-	@Query(value="SELECT * FROM `vt_role` ORDER BY `median_salary` ASC LIMIT 100;", nativeQuery=true)
+	@Query(value="SELECT * FROM `vt_role` ORDER BY `median_salary`;", nativeQuery=true)
 	public List<Role> listAllByMedianSalary();
 	
-	@Query(value="SELECT * FROM `vt_role` ORDER BY `median_change` ASC LIMIT 100;", nativeQuery=true)
+	@Query(value="SELECT * FROM `vt_role` ORDER BY `median_change`;", nativeQuery=true)
 	public List<Role> listAllByMedianChange();
 	
-	@Query(value="SELECT * FROM `vt_role` ORDER BY `historical_ads` ASC LIMIT 100;", nativeQuery=true)
+	@Query(value="SELECT * FROM `vt_role` ORDER BY `historical_ads`;", nativeQuery=true)
 	public List<Role> listAllByHistoricalAds();
 	
-	@Query(value="SELECT * FROM `vt_role` ORDER BY `ad_percentage` ASC LIMIT 100;", nativeQuery=true)
+	@Query(value="SELECT * FROM `vt_role` ORDER BY `ad_percentage`;", nativeQuery=true)
 	public List<Role> listAllByAdPercentage();
 	
-	@Query(value="SELECT * FROM `vt_role` ORDER BY `live_vacancies` ASC LIMIT 100;", nativeQuery=true)
+	@Query(value="SELECT * FROM `vt_role` ORDER BY `live_vacancies`;", nativeQuery=true)
 	public List<Role> listAllByLiveVacancies();
 	
 	
