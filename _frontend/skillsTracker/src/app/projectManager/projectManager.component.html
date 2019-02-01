@@ -22,14 +22,14 @@
 </div>
 
 <br>
-<table>
+<table width="100%">
     <tr>
       <th>Role / Skill</th>
       <th>Salary</th>
       <th>Hourly Salary</th>
       
       <button (click)="addNewTeamMemberPJ()" class="btn btn-dark">Add Project Manager</button>
-      <th>             </th>
+      
       <button (click)="addNewTeamMember()" class="btn btn-dark">Add Team Member</button>
     </tr>
     <tr *ngFor="let tm of teamMembers; let i=index">
