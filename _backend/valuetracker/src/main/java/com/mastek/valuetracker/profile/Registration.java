@@ -4,17 +4,18 @@ import javax.ws.rs.FormParam;
 
 public class Registration {
 	
-	@FormParam("skillId")
-	int skillId;
+	@FormParam("roleId")
+	int roleId;
 	
 	@FormParam("profileId")
 	int profileId;
 	
-	public int getSkillId() {
-		return skillId;
+	
+	public int getRoleId() {
+		return roleId;
 	}
-	public void setSkillId(int skillId) {
-		this.skillId = skillId;
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
 	}
 	public int getProfileId() {
 		return profileId;
@@ -24,6 +25,8 @@ public class Registration {
 	}
 	@Override
 	public String toString() {
-		return "Registration [skillId=" + skillId + ", profileId=" + profileId + "]";
+		return "Registration [roleId=" + roleId + ", profileId=" + profileId + "]";
 	}
+
+	
 }

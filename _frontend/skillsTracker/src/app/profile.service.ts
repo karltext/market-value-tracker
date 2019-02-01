@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Profile } from './profile';
-import { Skill } from './Skill';
+import { Role } from './role';
 
 
 @Injectable({
@@ -14,13 +14,29 @@ export class ProfileService {
 
   rootURL = "http://localhost:9900/profiles"
 
+  postOptions = {
+    headers: new HttpHeaders(
+      {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' })
+  }
+
   getProfile(profileId: number): Observable<Profile> {
     const url = this.rootURL + "/find?profileId=" + profileId
     return this.http.get<Profile>(url)
   }
 
-  getProfileSkills(profileId: number): Observable<Skill[]> {
-    const url = this.rootURL + "/" + profileId + "/skills"
-    return this.http.get<Skill[]>(url)
+  getProfileRoles(profileId: number): Observable<Role[]> {
+    const url = this.rootURL + "/" + profileId + "/roles"
+    return this.http.get<Role[]>(url)
+  }
+
+  addRoleToProfile(profileId: number, roleId: number): Observable<Role> {
+    const url = this.rootURL + "/role/add"
+    const body = "profileId=" + profileId + "&roleId=" + roleId
+    return this.http.post<Role>(url, body, this.postOptions)
+  }
+
+  listProfiles(): Observable<Profile[]> {
+    const url = this.rootURL + "/list"
+    return this.http.get<Profile[]>(url)
   }
 }

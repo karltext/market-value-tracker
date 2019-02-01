@@ -16,8 +16,8 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.mastek.valuetracker.role.Role;
 
+import com.mastek.valuetracker.role.Role;
 
 
 @Component

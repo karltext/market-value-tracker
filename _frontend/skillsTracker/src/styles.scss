@@ -25,11 +25,6 @@ header {
     }
 }
 
-main {
-    margin-top: 64px;
-    padding: 8px;
-}
-
 .table-head {
     position: fixed;
     width: 100%;
@@ -62,4 +57,22 @@ a {
     color: blue;
     text-decoration: none;
     font-weight: 600;
+}
+
+
+.container {
+    max-width: 1000px;
+    margin: 16px auto;
+}
+
+.profile-info {
+    display: flex;
+
+    div {
+        flex: 1;
+    }
+
+    label {
+        font-weight: 600;
+    }
 }

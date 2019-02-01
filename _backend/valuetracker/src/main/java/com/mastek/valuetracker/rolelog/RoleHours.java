@@ -2,15 +2,22 @@ package com.mastek.valuetracker.rolelog;
 
 
 import java.sql.Timestamp;
+
 import java.util.List;
+
+import java.util.Set;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -23,6 +30,7 @@ import com.mastek.valuetracker.role.Role;
 @XmlRootElement //Declares the automatic mapping of java to XML/JSON 
 public class RoleHours {
 	
+	Set<RoleHours> roleHours;
 	int inputID;
 	
 	@FormParam("role")
@@ -66,7 +74,6 @@ public class RoleHours {
 	public String toString() {
 		return "RoleHours [inputID=" + inputID + ", role=" + role + ", hours=" + hours + "]";
 	}
-	
 	
 	
 	

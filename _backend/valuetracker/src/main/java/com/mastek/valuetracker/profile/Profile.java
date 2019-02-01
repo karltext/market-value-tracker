@@ -16,6 +16,7 @@ import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mastek.valuetracker.role.Role;
 
 
 @Entity
@@ -35,7 +36,7 @@ public class Profile {
 	int profileRank;
 	
 	@JsonIgnore
-	Set<Skill> skills;
+	Set<Role> roles;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -70,12 +71,12 @@ public class Profile {
 	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinTable(name="HIB_Registrations", 
 			  joinColumns={@JoinColumn(name="FK_Profile_Id")},
-			  inverseJoinColumns={@JoinColumn(name="FK_Skill_Id")})
-	public Set<Skill> getSkills() {
-		return skills;
+			  inverseJoinColumns={@JoinColumn(name="FK_Role_Id")})
+	public Set<Role> getRoles() {
+		return roles;
 	}
-	public void setSkills(Set<Skill> skills) {
-		this.skills = skills;
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 	
 	@Override
