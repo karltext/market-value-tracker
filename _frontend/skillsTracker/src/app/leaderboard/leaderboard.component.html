@@ -4,8 +4,7 @@
         <div class="role-row">
         <div class="role-column">{{ profile.profileRank }}</div>
         <div class="role-column">{{ profile.username }}</div>
-        <div class="role-column">{{ profile.salary }}</div>
-        <div class="role-column">{{ Math.floor(Math.random() * 10) }}</div>
+        <div class="role-column">{{ profile.salary | number }}</div>
       </div>
     </div>
     <div>

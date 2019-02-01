@@ -1,6 +1,10 @@
 package com.mastek.valuetracker.role;
 
+
+import java.util.Date;
+
 import java.util.Set;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,11 +12,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Version;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import com.mastek.valuetracker.profile.Profile;
+
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name="vt_role")
@@ -47,7 +54,7 @@ public class Role {
 	int live_vacancies;
 	
 	@FormParam("updated")
-	String updated;	
+	Date updated;	
 	
 	Set<Profile> profiles;
 
@@ -120,13 +127,19 @@ public class Role {
 	public void setLive_vacancies(int live_vacancies) {
 		this.live_vacancies = live_vacancies;
 	}
-	public String getUpdated() {
+
+	
+	@Version
+	@Type(type = "dbtimestamp")
+	public Date getUpdated() {
 		return updated;
 	}
-	public void setUpdated(String updated) {
+	
+	public void setUpdated(Date updated) {
 		this.updated = updated;
 	}
 	
+
 	@ManyToMany(mappedBy="roles")
 	@XmlTransient 
 	public Set<Profile> getProfiles() {
@@ -135,4 +148,5 @@ public class Role {
 	public void setProfiles(Set<Profile> profiles) {
 		this.profiles = profiles;
 	}
+
 }

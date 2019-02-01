@@ -20,6 +20,7 @@ export class LeaderboardComponent implements OnInit {
   getProfiles() {
     this.profileService.listProfiles()
       .subscribe(res => {
+        console.log(res)
         this.profiles = res
       })
   }
