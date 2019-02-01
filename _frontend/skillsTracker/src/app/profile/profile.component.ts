@@ -51,18 +51,6 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  addRoleToProfile(profileId: number, roleName: string) {
-    this.roleService.getOneRoleByName(roleName)
-      .subscribe(res => {
-        if (!res) {
-          console.log(res, "add failed")
-          return
-        }
-        console.log(res, "fetching")
-        this.addRoleToProfileById(profileId, res.id)
-      })
-  }
-
   addRoleToProfileById(profileId: number, roleId: number) {
     this.profileService.addRoleToProfile(profileId, roleId)
       .subscribe(res => {
