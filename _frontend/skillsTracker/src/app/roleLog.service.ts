@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RoleLog } from './roleLog';
 import { Observable } from 'rxjs';
+import {Role} from './role'
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,11 @@ export class RoleLogService {
       })
   }
 
+  getSalaryByRole(role:String): Observable<Role[]> {
+    const url = this.rootURL + "/findByRole?skill="+role
+    return this.httpsvc.get<Role[]>(url)
+  }
+}
   
 
-}
+

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RoleLogService } from '../roleLog.service';
 import { ActivatedRoute } from '@angular/router';
 import { RoleLog } from '../roleLog';
+import {Role} from '../role'
 
 @Component({
     selector: 'app-profile',
@@ -11,6 +12,7 @@ import { RoleLog } from '../roleLog';
 export class ProjectManagerComponent implements OnInit {
 
     roleLogs: RoleLog[]
+    roles: Role[]
 
     constructor(private roleLogService: RoleLogService,
         private route: ActivatedRoute) { }
@@ -21,12 +23,24 @@ export class ProjectManagerComponent implements OnInit {
         )
     }
 
-    addNewRoleLog(newRoleLog: RoleLog) {
+    addNewRoleLog(newRoleLog: RoleLog,role:String) {
         this.roleLogService.addNewRoleLog(newRoleLog).subscribe(
             res => {
                 this.roleLogService.getRoleLog().subscribe(
-                    res => { this.roleLogs = res }
+                    res => { 
+                      this.roleLogs = res 
+                      this.roleLogService.getSalaryByRole(this.roleLogs[0].role).subscribe(
+                        res => { 
+                          this.roles = res ,console.log(res)}
+                          
+                      )
+                  
+                  }
                 )
+                  
+                  
+                  
+                
             }
         )
     }
