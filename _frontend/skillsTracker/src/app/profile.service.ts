@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Profile } from './profile';
-import { Skill } from './Skill';
 import { Role } from './role';
 
 
@@ -34,5 +33,10 @@ export class ProfileService {
     const url = this.rootURL + "/role/add"
     const body = "profileId=" + profileId + "&roleId=" + roleId
     return this.http.post<Role>(url, body, this.postOptions)
+  }
+
+  listProfiles(): Observable<Profile[]> {
+    const url = this.rootURL + "/list"
+    return this.http.get<Profile[]>(url)
   }
 }

@@ -11,6 +11,7 @@ export class RoleComponent implements OnInit {
 
   roles: Role[]
   fltRoles: Role[]
+  reversed:boolean = false
 
   constructor(private roleService: RoleService) { }
 
@@ -35,7 +36,12 @@ export class RoleComponent implements OnInit {
   getRolesByOrder(field:number) {
     this.roleService.getRolesByOrder(field)
       .subscribe(res => {
-        this.roles = res
+        this.reversed = !this.reversed
+        if(this.reversed){
+          this.roles = res.reverse().slice(0,100)
+        }else{
+          this.roles = res.slice(0,100)
+        }
       })
   }
 
