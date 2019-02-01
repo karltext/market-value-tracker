@@ -32,4 +32,11 @@ export class RoleComponent implements OnInit {
       })
   }
 
+  getRolesByOrder(field:number) {
+    this.roleService.getRolesByOrder(field)
+      .subscribe(res => {
+        this.roles = res
+      })
+  }
+
 }
