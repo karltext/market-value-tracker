@@ -71,4 +71,30 @@ public class RoleAccessAPI {
 		}
         return roleList;
     }
+    
+    @Path("/listInOrder")
+   	@GET
+   	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+       public List<Role> listAllInOrder(@QueryParam("field") int field) {
+    	List<Role> roles = new ArrayList<Role>();
+        switch (field) {
+            case 1:  roles = getRepository().listAllBySkill();
+                     break;
+            case 2:  roles = getRepository().listAllByRank();
+                     break;
+            case 3:  roles = getRepository().listAllByRankChange();
+                     break;
+            case 4:  roles = getRepository().listAllByMedianSalary();
+                     break;
+            case 5:  roles = getRepository().listAllByMedianChange();
+                     break;
+            case 6:  roles = getRepository().listAllByHistoricalAds();
+                     break;
+            case 7:  roles = getRepository().listAllByAdPercentage();
+                     break;
+            case 8:  roles = getRepository().listAllByLiveVacancies();
+                     break;
+        }
+        return roles;
+       }
 }

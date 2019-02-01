@@ -22,8 +22,8 @@ export class RoleService {
     return this.http.get<Role[]>(url)
   }
 
-  getOneRoleByName(role: string): Observable<Role> {
-    const url = this.rootURL + "/findOneByRole?skill="+role
-    return this.http.get<Role>(url)
+  getRolesByOrder(field:number): Observable<Role[]> {
+    const url = this.rootURL + "/listInOrder?field="+field
+    return this.http.get<Role[]>(url)
   }
 }
