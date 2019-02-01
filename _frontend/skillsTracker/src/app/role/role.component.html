@@ -1,21 +1,41 @@
-<form class="roleFilter" (submit)="getRolesByName(prole.value)">
-  <table>
-    <tr>
-      <td>
-        <input placeholder="Filter Roles by Skill" #prole>
-      </td>
-      <td>
-         <button type="submit" class="btn btn-dark">Filter</button>
-      </td>
-    </tr>
-  </table>
-</form>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Market Skills Tracker</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">All Roles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/projectManager">ProjectManager</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profile/1">Profile</a>
+        </li>
+      </ul>
+    </div>
+    <form class="roleFilter" (submit)="getRolesByName(prole.value)">
+        <table>
+          <tr>
+            <td>
+              <input placeholder="Filter Roles by Skill" #prole>
+            </td>
+            <td>
+               <button type="submit" class="btn btn-dark">Filter</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+  </nav>
 <div *ngIf="!roles">
   Error: Could not load roles
 </div>
 <!-- https://www.itjobswatch.co.uk/jobs/uk/agile%20software%20development.do -->
 <div *ngIf="roles" class="roles-container">
-  <div class="role-row">
+  <div class="head role-row">
     <div class="role-column role-head">skill</div>
     <div class="role-column role-head">Rank</div>
     <div class="role-column role-head">Rank change</div>
