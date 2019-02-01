@@ -1,29 +1,64 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Market Skills Tracker</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">All Roles</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/projectManager">ProjectManager</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/profile/1">Profile</a>
-        </li>
-      </ul>
+
+<br>
+<div class="container" >
+  <div class="row">
+    <div class="col-sm-4">
+        <h3>Small Team</h3>
+        <p>Team  of 5 team members or less</p>
+        <button (click)="addNewTeamMemberPJ();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();ngOnInit();"class="btn btn-dark">Add</button>
     </div>
-  </nav>
+    <div class="col-sm-4">
+      <h3>Medium Team</h3>
+      <p>Teams Consisting of 6-13 members</p>
+      <button (click)="deleteAll();addNewTeamMemberPJ();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();ngOnInit();" class="btn btn-dark">Add</button>
+    </div>
+    <div class="col-sm-4">
+        <h3>Large Team</h3>
+        <p>Teams of 14 members or more</p>
+        <button (click)="addNewTeamMemberPJ();addNewTeamMemberPJ();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();ngOnInit();"class="btn btn-dark">Add</button>
+    </div>
+
+  </div>
+</div>
+
+<br>
+<table>
+    <tr>
+      <th>Role / Skill</th>
+      <th>Salary</th>
+      <th>Hourly Salary</th>
+      
+      <button (click)="addNewTeamMemberPJ()" class="btn btn-dark">Add Project Manager</button>
+      <th>             </th>
+      <button (click)="addNewTeamMember()" class="btn btn-dark">Add Team Member</button>
+    </tr>
+    <tr *ngFor="let tm of teamMembers; let i=index">
+      <td>{{tm.roleName}}   </td>
+      <td>£{{tm.salary}}   </td>
+      <td>£{{tm.hourlySalary}}ph   </td>
+      <td><button (click)="deleteTeamMember(tm.roleId);" class="btn btn-dark">X</button></td>
+    </tr>
+  </table>
+
   <br>
+  <button (click)="ngOnInit()"class="btn btn-dark">Update Stats</button>
+  
+  <button (click)="deleteAll();ngOnInit();"class="btn btn-dark">Delete All</button>
+  <br><br>
+  <div><label>Total Yearly Salary: </label> £{{ totalSalary | number }}</div>
+  <div><label>Total Monthly Salary: </label> £{{ monthlySalary | number }}</div>
+  <div><label>Monthly Charge to Client: </label> £{{ monthlyCharge | number }}</div>
+
+
+
+<br>
+<p></p>
+<br>
   <form (submit)="addNewRoleLog({role:rol.value, hours:hrs.value})">
     <tr>
       <td><input placeholder="Role / Skill" #rol></td>
       <td><input placeholder="Number of Hours" #hrs></td>
-      <td><input type="submit" value="Add"></td>
+      <td><input type="submit" value="Add" class="btn btn-dark"></td>
     </tr>
   </form>
 
@@ -37,8 +72,7 @@
     <tr *ngFor="let r of roleLogs; let i=index">
       <td>{{r.role}}</td>
       <td>{{r.hours}}</td>
-      <td><button (click)="deleteRoleLog(r.inputID)">X</button></td>
+      <td><button (click)="deleteRoleLog(r.inputID);" class="btn btn-dark">X</button></td>
     </tr>
   </table>
   
-  <td><button (click)="ReturnCost">Calculate Cost</button></td>

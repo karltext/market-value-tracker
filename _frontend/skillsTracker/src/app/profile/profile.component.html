@@ -1,26 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Market Skills Tracker</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">All Roles</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/projectManager">ProjectManager</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/profile/1">Profile</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
 <div class="container">
   <div>
-    <div class="profile-info">
+    <div *ngIf="profile" class="profile-info">
       <div><label>Name: </label>{{ profile.username }}</div>
       <div><label>Salary: </label>£{{ profile.salary | number }}</div>
       <div *ngIf="didLoadRoles"><label>Skill count: </label>{{ roles.length }}</div>
@@ -31,16 +11,18 @@
       <div><label>Max Salary: </label>£{{ maxSalary | number }}</div>
       <div><label>% of Market Salary: </label>{{ percMarketSalary | number }}%</div>
     </div>
-    <h4>My Skills:</h4>
-    <div class="role-row">
-      <div class="role-column role-head">skill</div>
-      <div class="role-column role-head">Rank</div>
-      <div class="role-column role-head">Rank change</div>
-      <div class="role-column role-head">Median salary</div>
-      <div class="role-column role-head">Median % change</div>
-      <div class="role-column role-head">Historical ads</div>
-      <div class="role-column role-head">Ad %</div>
-      <div class="role-column role-head">Live vacancies</div>
+    <div *ngIf="roles">
+        <h4>My Skills:</h4> 
+        <div class="role-row">
+          <div class="role-column role-head">skill</div>
+          <div class="role-column role-head">Rank</div>
+          <div class="role-column role-head">Rank change</div>
+          <div class="role-column role-head">Median salary</div>
+          <div class="role-column role-head">Median % change</div>
+          <div class="role-column role-head">Historical ads</div>
+          <div class="role-column role-head">Ad %</div>
+          <div class="role-column role-head">Live vacancies</div>
+        </div>
     </div>
     <div *ngFor="let role of roles" class="roles">
       <div class="role-row">
@@ -63,13 +45,17 @@
         <div class="role-column">{{ role.live_vacancies | number}}</div>
       </div>
   </div>
-  <div class="new-skill">
-    <form (submit)="addRoleToProfile(profile.profileId, roleId.value)">
-      <input class="form-control" type="number" #roleId>
+  <!-- <div class="new-skill">
+     <h4>Add New Skill:</h4>
+    <form (submit)="addRoleToProfile(profile.profileId, roleName.value)">
+      <input class="form-control" type="text" #roleName>
       <button class="btn btn-success" type="submit">Submit</button>
     </form>
-  </div>
-  <div *ngIf="!profile">
-    Error: Could not find user profile!
+  </div> -->
+  <div *ngIf="!didLoadRoles">
+    <a class="nav-link" href="/profile/4">
+      <img src="https://cdn3.iconfinder.com/data/icons/sociocons/256/linkedin-sociocon.png" width=40 height=40>
+      Sync Linkedin skills
+    </a>
   </div>
 </div>

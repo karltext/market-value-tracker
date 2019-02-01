@@ -15,6 +15,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/profile/1">Profile</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/leaderboard">leaderboard</a>
+          </li>
       </ul>
     </div>
     <form class="roleFilter" (submit)="getRolesByName(prole.value)">
@@ -36,14 +39,14 @@
 <!-- https://www.itjobswatch.co.uk/jobs/uk/agile%20software%20development.do -->
 <div *ngIf="roles" class="roles-container">
   <div class="head role-row">
-    <div class="role-column role-head">skill</div>
-    <div class="role-column role-head">Rank</div>
-    <div class="role-column role-head">Rank change</div>
-    <div class="role-column role-head">Median salary</div>
-    <div class="role-column role-head">Median % change</div>
-    <div class="role-column role-head">Historical ads</div>
-    <div class="role-column role-head">Ad %</div>
-    <div class="role-column role-head">Live vacancies</div>
+    <div (click)="getRolesByOrder(1)" class="role-column role-head">skill</div>
+    <div (click)="getRolesByOrder(2)" class="role-column role-head">Rank</div>
+    <div (click)="getRolesByOrder(3)" class="role-column role-head">Rank change</div>
+    <div (click)="getRolesByOrder(4)" class="role-column role-head">Median salary</div>
+    <div (click)="getRolesByOrder(5)" class="role-column role-head">Median % change</div>
+    <div (click)="getRolesByOrder(6)" class="role-column role-head">Historical ads</div>
+    <div (click)="getRolesByOrder(7)" class="role-column role-head">Ad %</div>
+    <div (click)="getRolesByOrder(8)" class="role-column role-head">Live vacancies</div>
   </div>
   <div class="inner-container">
     <div *ngFor="let role of roles" class="roles">

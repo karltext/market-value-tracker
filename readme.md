@@ -7,3 +7,6 @@ Find a way of monitoring value of developer skills.
 * https://profile-summary-for-github.com/
 * https://octoverse.github.com/projects
 * https://githut.info/
+
+https://techsenseportal.azurewebsites.net/#/home
+https://developer.linkedin.com/docs/ref/v2/standardized-data/skills#

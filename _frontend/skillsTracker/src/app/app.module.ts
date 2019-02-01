@@ -8,13 +8,15 @@ import { ProjectManagerComponent } from './projectManager/projectManager.compone
 import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoleComponent,
     ProfileComponent,
-    ProjectManagerComponent
+    ProjectManagerComponent,
+    LeaderboardComponent
   ],
   imports: [
     BrowserModule,
