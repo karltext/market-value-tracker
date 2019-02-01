@@ -74,10 +74,9 @@ public class TeamAPI {
 	    @DELETE
 		@Path("/deleteAll")
 		@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-		public TeamMember deleteAll(int roleId) {
-			TeamMember deleteTeamMember = getRepository().findById(roleId).get();
+		public TeamMember deleteAll() {
 			getRepository().deleteAll();
-			return deleteTeamMember;
+			return null;
 		}
 	    
 	

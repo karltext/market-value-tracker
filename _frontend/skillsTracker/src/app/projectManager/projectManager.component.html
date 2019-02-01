@@ -3,19 +3,19 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-        <h3>Little Fish</h3>
+        <h3>Small Team</h3>
         <p>Team consisting of 5 team members or less</p>
-        <button (click)="addNewTeamMemberPJ();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();">Add</button>
+        <button (click)="addNewTeamMemberPJ();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();ngOnInit();">Add</button>
     </div>
     <div class="col-sm-4">
-      <h3>Cardboard Box</h3>
+      <h3>Medium Team</h3>
       <p>Teams Consisting of 6-13 members</p>
-      <button (click)="addNewTeamMemberPJ();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();">Add</button>
+      <button (click)="deleteAll();addNewTeamMemberPJ();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();ngOnInit();">Add</button>
     </div>
     <div class="col-sm-4">
-        <h3>Big Fish</h3>
+        <h3>Large Team</h3>
         <p>Teams of 14 members or more</p>
-        <button (click)="addNewTeamMemberPJ();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();">Add</button>
+        <button (click)="addNewTeamMemberPJ();addNewTeamMemberPJ();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();ngOnInit();">Add</button>
     </div>
 
   </div>
@@ -35,9 +35,19 @@
       <td>{{tm.roleName}}</td>
       <td>{{tm.salary}}</td>
       <td>{{tm.hourlySalary}}</td>
-      <td><button (click)="deleteTeamMember(tm.roleId)">X</button></td>
+      <td><button (click)="deleteTeamMember(tm.roleId);">X</button></td>
     </tr>
   </table>
+
+  <br>
+  <button (click)="ngOnInit()">Update Stats</button>
+      <button (click)="deleteAll();">Delete All</button>
+  <br><br>
+  <div><label>Total Yearly Salary: </label> {{ totalSalary | number }}</div>
+  <div><label>Total Monthly Salary: </label> {{ monthlySalary | number }}</div>
+  <div><label>Monthly Charge to Client: </label> {{ monthlyCharge | number }}</div>
+
+
 
 <br>
 <p>------------------------------------------------------------------------------------------------------------------------------</p>
@@ -60,7 +70,7 @@
     <tr *ngFor="let r of roleLogs; let i=index">
       <td>{{r.role}}</td>
       <td>{{r.hours}}</td>
-      <td><button (click)="deleteRoleLog(r.inputID)">X</button></td>
+      <td><button (click)="deleteRoleLog(r.inputID);">X</button></td>
     </tr>
   </table>
   

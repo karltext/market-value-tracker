@@ -42,5 +42,16 @@ export class TeamMemberService {
       })
   }
 
+  deleteAll(): Observable<TeamMember> {
+    return this.httpsvc.request<TeamMember>('DELETE', this.rootURL + "/deleteAll",
+      {
+        headers: new HttpHeaders({ 'Content-Type': 'text/plain' }),
+        body:{}
+      })
+  }
+
+
+  
+
 
 }

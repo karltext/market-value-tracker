@@ -15,16 +15,26 @@ export class ProjectManagerComponent implements OnInit {
     roleLogs: RoleLog[]
     teamMembers: TeamMember[]
 
+    totalSalary:number
+    monthlySalary:number
+    monthlyCharge:number
+
     constructor(private roleLogService: RoleLogService,
                 private teamMemberService: TeamMemberService,
                 private route: ActivatedRoute) { }
 
     ngOnInit() {
         this.roleLogService.getRoleLog().subscribe(
-            res => { this.roleLogs = res }
+            res => {
+                this.roleLogs = res }
         ),
         this.teamMemberService.getTeamMember().subscribe(
-            res => { this.teamMembers = res }
+            res => { 
+                this.teamMembers = res 
+                this.totalSalary = this.teamSum('salary')
+                this.monthlySalary = this.monthlySalarySum()
+                this.monthlyCharge = this.monthlyChargeSum()
+            }
         )
     }
 
@@ -36,6 +46,7 @@ export class ProjectManagerComponent implements OnInit {
                 )
             }
         )
+        this.ngOnInit();
     }
 
     deleteRoleLog(index: number) {
@@ -45,8 +56,9 @@ export class ProjectManagerComponent implements OnInit {
                     res => { this.roleLogs = res }
                 )
              }
-            )
-             }
+        )
+        this.ngOnInit();
+    }
     
     addNewTeamMember(newTeamMember: TeamMember) {
         this.teamMemberService.addNewTeamMember(newTeamMember).subscribe(
@@ -56,6 +68,7 @@ export class ProjectManagerComponent implements OnInit {
                 )
             }
         )
+        this.ngOnInit();
     }
 
     addNewTeamMemberPJ(newTeamMember: TeamMember) {
@@ -66,6 +79,7 @@ export class ProjectManagerComponent implements OnInit {
                 )
             }
         )
+        this.ngOnInit();
     }
             
     deleteTeamMember(index: number){
@@ -76,7 +90,35 @@ export class ProjectManagerComponent implements OnInit {
                )
             }
        )
+       this.ngOnInit();
     }   
+
+    deleteAll(){
+        this.teamMemberService.deleteAll().subscribe(
+            res => {
+                 this.teamMemberService.getTeamMember().subscribe(
+                  res => { this.teamMembers = res }
+              )
+           }
+      )
+      this.ngOnInit();
+    }
+
+  teamSum(column: string): number {
+    let sum = 0
+    for (let tm of this.teamMembers) {
+      sum += tm[column]
+    }
+    return sum
+  }
+
+  monthlySalarySum(): number {
+    return Math.floor(this.totalSalary / 12)
+  }
+
+  monthlyChargeSum(): number {
+    return Math.floor((this.totalSalary / 12)*1.6)
+  }
 
     
 }             
