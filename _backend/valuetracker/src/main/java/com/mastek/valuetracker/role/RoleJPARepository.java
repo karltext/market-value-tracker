@@ -13,6 +13,9 @@ public interface RoleJPARepository extends CrudRepository<Role,Integer>{
 	
 	@Query(value="SELECT * FROM `vt_role` t WHERE t.skill LIKE CONCAT('%',:skill, '%')", nativeQuery=true)
 	public List<Role> findByRole(@Param("skill") String skill);
+	
+	@Query(value="SELECT * FROM `vt_role` t WHERE t.skill == :skill", nativeQuery=true)
+	public List<Role> findOneByRole(@Param("skill") String skill);
 
 	@Query(value="SELECT * FROM `vt_role` r WHERE "
 				+ " r.skill LIKE CONCAT('% ', :skill, ' %') "

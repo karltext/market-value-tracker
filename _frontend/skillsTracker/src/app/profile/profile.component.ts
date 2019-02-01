@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Profile } from '../profile';
 import { Skill } from '../Skill';
 import { Role } from '../role';
+import { RoleService } from '../role.service';
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +21,10 @@ export class ProfileComponent implements OnInit {
   avgSalary: number
   percMarketSalary: number
 
+  addMessage: string
+
   constructor(private profileService: ProfileService,
+              private roleService: RoleService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -47,9 +51,22 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  addRoleToProfile(profileId: number, roleId: number) {
+  addRoleToProfile(profileId: number, roleName: string) {
+    this.roleService.getOneRoleByName(roleName)
+      .subscribe(res => {
+        if (!res) {
+          console.log(res, "add failed")
+          return
+        }
+        console.log(res, "fetching")
+        this.addRoleToProfileById(profileId, res.id)
+      })
+  }
+
+  addRoleToProfileById(profileId: number, roleId: number) {
     this.profileService.addRoleToProfile(profileId, roleId)
       .subscribe(res => {
+        console.log(res, "add success")
         this.getProfileRoles(profileId)
       })
   }
