@@ -21,4 +21,9 @@ export class RoleService {
     const url = this.rootURL + "/findAggregateByRole?skill="+role
     return this.http.get<Role[]>(url)
   }
+
+  getOneRoleByName(role: string): Observable<Role> {
+    const url = this.rootURL + "/findOneByRole?skill="+role
+    return this.http.get<Role>(url)
+  }
 }

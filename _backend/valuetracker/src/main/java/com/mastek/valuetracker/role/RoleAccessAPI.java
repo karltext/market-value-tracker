@@ -49,6 +49,17 @@ public class RoleAccessAPI {
 		}
         return roleList; 
     }
+    
+    @Path("/findOneByRole")
+   	@GET
+   	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+       public List<Role> findOneByRole(@QueryParam("skill") String skill) {
+       	List<Role> roleList = new ArrayList<Role>();
+       	for (Role roles : getRepository().findByRole(skill)) {
+       		roleList.add(roles);
+   		}
+           return roleList; 
+       }
 
     @Path("/findAggregateByRole")
 	@GET
