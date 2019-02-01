@@ -32,20 +32,20 @@
       <button (click)="addNewTeamMember()">Add Team Member</button>
     </tr>
     <tr *ngFor="let tm of teamMembers; let i=index">
-      <td>{{tm.roleName}}</td>
-      <td>{{tm.salary}}</td>
-      <td>{{tm.hourlySalary}}</td>
+      <td>{{tm.roleName}}   </td>
+      <td>£{{tm.salary}}   </td>
+      <td>£{{tm.hourlySalary}}ph   </td>
       <td><button (click)="deleteTeamMember(tm.roleId);">X</button></td>
     </tr>
   </table>
 
   <br>
   <button (click)="ngOnInit()">Update Stats</button>
-      <button (click)="deleteAll();">Delete All</button>
+      <button (click)="deleteAll();ngOnInit();">Delete All</button>
   <br><br>
-  <div><label>Total Yearly Salary: </label> {{ totalSalary | number }}</div>
-  <div><label>Total Monthly Salary: </label> {{ monthlySalary | number }}</div>
-  <div><label>Monthly Charge to Client: </label> {{ monthlyCharge | number }}</div>
+  <div><label>Total Yearly Salary: </label> £{{ totalSalary | number }}</div>
+  <div><label>Total Monthly Salary: </label> £{{ monthlySalary | number }}</div>
+  <div><label>Monthly Charge to Client: </label> £{{ monthlyCharge | number }}</div>
 
 
 
