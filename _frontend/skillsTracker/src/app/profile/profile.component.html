@@ -1,15 +1,75 @@
-
-<div *ngIf="profile">
-  <h2>{{ profile.username }}!</h2>
-  <h4>Salary: {{ profile.salary }}</h4>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Market Skills Tracker</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">All Roles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/projectManager">ProjectManager</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profile/1">Profile</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<div class="container">
   <div>
-    <h4>Skills:</h4>
-    <span *ngFor="let s of skills">
-      {{ s.skillName }}
-    </span>
+    <div class="profile-info">
+      <div><label>Name: </label>{{ profile.username }}</div>
+      <div><label>Salary: </label>£{{ profile.salary | number }}</div>
+      <div *ngIf="didLoadRoles"><label>Skill count: </label>{{ roles.length }}</div>
+      <div><label>Rank: </label>{{ profile.profile_rank }}</div>
+    </div>
+    <div *ngIf="didLoadRoles" class="profile-info">
+      <div><label>Expected Salary: </label>£{{ avgSalary | number }}</div>
+      <div><label>Max Salary: </label>£{{ maxSalary | number }}</div>
+      <div><label>% of Market Salary: </label>{{ percMarketSalary | number }}%</div>
+    </div>
+    <h4>My Skills:</h4>
+    <div class="role-row">
+      <div class="role-column role-head">skill</div>
+      <div class="role-column role-head">Rank</div>
+      <div class="role-column role-head">Rank change</div>
+      <div class="role-column role-head">Median salary</div>
+      <div class="role-column role-head">Median % change</div>
+      <div class="role-column role-head">Historical ads</div>
+      <div class="role-column role-head">Ad %</div>
+      <div class="role-column role-head">Live vacancies</div>
+    </div>
+    <div *ngFor="let role of roles" class="roles">
+      <div class="role-row">
+        <div class="role-column">
+          <a target="_blank" href="https://www.itjobswatch.co.uk/jobs/uk/{{ role.skill }}.do">
+            {{ role.skill }}
+          </a>
+        </div>
+        <div class="role-column">{{ role.role_rank }}</div>
+        <div class="role-column">
+          <span *ngIf="role.rank_change > 0">😃</span>
+          <span *ngIf="role.rank_change < 0">😰</span>
+          <span *ngIf="role.rank_change == 0">😐</span>
+          {{ role.rank_change }}
+        </div>
+        <div class="role-column">£{{ role.median_salary | number}}</div>
+        <div class="role-column">{{ role.median_change }}%</div>
+        <div class="role-column">{{ role.historical_ads | number}}</div>
+        <div class="role-column">{{ role.ad_percentage }}%</div>
+        <div class="role-column">{{ role.live_vacancies | number}}</div>
+      </div>
+  </div>
+  <div class="new-skill">
+    <form (submit)="addRoleToProfile(profile.profileId, roleId.value)">
+      <input class="form-control" type="number" #roleId>
+      <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+  </div>
+  <div *ngIf="!profile">
+    Error: Could not find user profile!
   </div>
 </div>
-<div *ngIf="!profile">
-  Error: Could not find user profile!
-</div>
-

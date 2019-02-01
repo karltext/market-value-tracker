@@ -1,12 +1,18 @@
 package com.mastek.valuetracker.role;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+import com.mastek.valuetracker.profile.Profile;
 
 @Entity
 @Table(name="vt_role")
@@ -15,25 +21,36 @@ public class Role {
 
 	@FormParam("id")
 	int id;
+	
 	@FormParam("skill")
 	String skill;
+	
 	@FormParam("rank")
 	int role_rank;
+	
 	@FormParam("rank_change")
 	int rank_change;
+	
 	@FormParam("median_salary")
 	double median_salary;
+	
 	@FormParam("median_change")
 	double median_change;
+	
 	@FormParam("historical_ads")
 	int historical_ads;
+	
 	@FormParam("ad_percentage")
 	double ad_percentage;
+	
 	@FormParam("live_vacancies")
 	int live_vacancies;
+	
 	@FormParam("updated")
 	String updated;	
 	
+	Set<Profile> profiles;
+
 	@Override
 	public String toString() {
 		return "Role [id=" + id + ", skill=" + skill + ", rank=" + role_rank + ", rank_change=" + rank_change
@@ -50,6 +67,7 @@ public class Role {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public String getSkill() {
 		return skill;
 	}
@@ -107,5 +125,14 @@ public class Role {
 	}
 	public void setUpdated(String updated) {
 		this.updated = updated;
+	}
+	
+	@ManyToMany(mappedBy="roles")
+	@XmlTransient 
+	public Set<Profile> getProfiles() {
+		return profiles;
+	}
+	public void setProfiles(Set<Profile> profiles) {
+		this.profiles = profiles;
 	}
 }

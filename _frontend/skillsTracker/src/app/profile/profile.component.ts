@@ -3,6 +3,7 @@ import { ProfileService } from '../profile.service';
 import { ActivatedRoute } from '@angular/router';
 import { Profile } from '../profile';
 import { Skill } from '../Skill';
+import { Role } from '../role';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +13,12 @@ import { Skill } from '../Skill';
 export class ProfileComponent implements OnInit {
 
   profile: Profile
-  skills: Skill[]
+  roles: Role[]
+  didLoadRoles: boolean = false
+
+  maxSalary: number
+  avgSalary: number
+  percMarketSalary: number
 
   constructor(private profileService: ProfileService,
               private route: ActivatedRoute) { }
@@ -20,7 +26,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     const profileId = parseInt(this.route.snapshot.paramMap.get('profileId'))
     this.getProfile(profileId)
-    this.getProfileSkills(profileId)
+    this.getProfileRoles(profileId)
   }
 
   getProfile(profileId: number) {
@@ -30,11 +36,48 @@ export class ProfileComponent implements OnInit {
       })
   }
 
-  getProfileSkills(profileId: number) {
-    this.profileService.getProfileSkills(profileId)
+  getProfileRoles(profileId: number) {
+    this.profileService.getProfileRoles(profileId)
     .subscribe(res => {
-      this.skills = res
+      this.roles = res
+      this.maxSalary = this.roleMax('median_salary')
+      this.avgSalary = this.roleAvg('median_salary')
+      this.percMarketSalary = this.salaryPercOfMarketAvg()
+      this.didLoadRoles = true
     })
+  }
+
+  addRoleToProfile(profileId: number, roleId: number) {
+    this.profileService.addRoleToProfile(profileId, roleId)
+      .subscribe(res => {
+        this.getProfileRoles(profileId)
+      })
+  }
+  
+  roleAvg(column: string): number {
+    return this.roleSum(column) / this.roles.length;
+  }
+
+  roleSum(column: string): number {
+    let sum = 0
+    for (let r of this.roles) {
+      sum += r[column]
+    }
+    return sum
+  }
+
+  roleMax(column: string): number {
+    var max = 0
+    for (let r of this.roles) {
+      if (max < r[column]) {
+        max = r[column]
+      }
+    }
+    return max
+  }
+
+  salaryPercOfMarketAvg(): number {
+    return Math.floor((this.profile.salary / this.roleAvg('median_salary')) * 100)
   }
 
 }
