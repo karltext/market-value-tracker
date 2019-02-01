@@ -7,6 +7,7 @@ import com.mastek.valuetracker.profile.ProfileAccessAPI;
 import com.mastek.valuetracker.CORSFilter;
 import com.mastek.valuetracker.role.RoleAccessAPI;
 import com.mastek.valuetracker.rolelog.RoleHoursAPI;
+import com.mastek.valuetracker.rolelog.TeamAPI;
 
 @Component
 public class ServiceConfig extends ResourceConfig {
@@ -15,5 +16,6 @@ public class ServiceConfig extends ResourceConfig {
         register(ProfileAccessAPI.class);
         register(RoleHoursAPI.class);
         register(CORSFilter.class);
+        register(TeamAPI.class);
     }
 }

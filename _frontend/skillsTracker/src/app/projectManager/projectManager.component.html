@@ -1,5 +1,60 @@
 
+<<<<<<< HEAD
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+        <h3>Small Team</h3>
+        <p>Team consisting of 5 team members or less</p>
+        <button (click)="addNewTeamMemberPJ();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();ngOnInit();">Add</button>
+    </div>
+    <div class="col-sm-4">
+      <h3>Medium Team</h3>
+      <p>Teams Consisting of 6-13 members</p>
+      <button (click)="deleteAll();addNewTeamMemberPJ();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();ngOnInit();">Add</button>
+    </div>
+    <div class="col-sm-4">
+        <h3>Large Team</h3>
+        <p>Teams of 14 members or more</p>
+        <button (click)="addNewTeamMemberPJ();addNewTeamMemberPJ();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();ngOnInit();">Add</button>
+    </div>
+
+  </div>
+</div>
+
+<br>
+<table>
+    <tr>
+      <th>Role / Skill</th>
+      <th>Salary</th>
+      <th>Hourly Salary</th>
+      
+      <button (click)="addNewTeamMemberPJ()">Add Project Manager</button>
+      <button (click)="addNewTeamMember()">Add Team Member</button>
+    </tr>
+    <tr *ngFor="let tm of teamMembers; let i=index">
+      <td>{{tm.roleName}}   </td>
+      <td>£{{tm.salary}}   </td>
+      <td>£{{tm.hourlySalary}}ph   </td>
+      <td><button (click)="deleteTeamMember(tm.roleId);">X</button></td>
+    </tr>
+  </table>
+
+=======
+>>>>>>> e15365f5ad73dc318de7df793f14a60b1e9dc24b
   <br>
+  <button (click)="ngOnInit()">Update Stats</button>
+      <button (click)="deleteAll();ngOnInit();">Delete All</button>
+  <br><br>
+  <div><label>Total Yearly Salary: </label> £{{ totalSalary | number }}</div>
+  <div><label>Total Monthly Salary: </label> £{{ monthlySalary | number }}</div>
+  <div><label>Monthly Charge to Client: </label> £{{ monthlyCharge | number }}</div>
+
+
+
+<br>
+<p>------------------------------------------------------------------------------------------------------------------------------</p>
+<br>
   <form (submit)="addNewRoleLog({role:rol.value, hours:hrs.value})">
     <tr>
       <td><input placeholder="Role / Skill" #rol></td>
@@ -18,8 +73,7 @@
     <tr *ngFor="let r of roleLogs; let i=index">
       <td>{{r.role}}</td>
       <td>{{r.hours}}</td>
-      <td><button (click)="deleteRoleLog(r.inputID)">X</button></td>
+      <td><button (click)="deleteRoleLog(r.inputID);">X</button></td>
     </tr>
   </table>
   
-  <td><button (click)="ReturnCost">Calculate Cost</button></td>
