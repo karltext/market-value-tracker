@@ -2,6 +2,7 @@ package com.mastek.valuetracker.rolelog;
 
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.mastek.valuetracker.role.Role;
 
 
 @Entity
@@ -24,10 +30,10 @@ public class RoleHours {
 	
 	@FormParam("hours")
 	int hours;
-	/*
-	//@FormParam("date")
-	Timestamp currentDate;
-	*/
+	
+	@FormParam("charge")
+	double charge;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int getInputID() {
@@ -48,11 +54,21 @@ public class RoleHours {
 	public void setHours(int hours) {
 		this.hours = hours;
 	}
-	/*
-	public Timestamp getCurrentDate() {
-		return currentDate;
+
+	public double getCharge() {
+		return charge;
 	}
-	*/
+	public void setCharge(double charge) {
+		this.charge = charge;
+	}
+	
+	@Override
+	public String toString() {
+		return "RoleHours [inputID=" + inputID + ", role=" + role + ", hours=" + hours + "]";
+	}
+	
+	
+	
 	
 	
 	

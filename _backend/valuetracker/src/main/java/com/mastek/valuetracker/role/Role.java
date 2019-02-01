@@ -1,12 +1,17 @@
 package com.mastek.valuetracker.role;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name="vt_role")
@@ -32,7 +37,7 @@ public class Role {
 	@FormParam("live_vacancies")
 	int live_vacancies;
 	@FormParam("updated")
-	String updated;	
+	Date updated;	
 	
 	@Override
 	public String toString() {
@@ -102,10 +107,16 @@ public class Role {
 	public void setLive_vacancies(int live_vacancies) {
 		this.live_vacancies = live_vacancies;
 	}
-	public String getUpdated() {
+
+	
+	@Version
+	@Type(type = "dbtimestamp")
+	public Date getUpdated() {
 		return updated;
 	}
-	public void setUpdated(String updated) {
+	
+	public void setUpdated(Date updated) {
 		this.updated = updated;
 	}
+	
 }

@@ -1,5 +1,8 @@
 package com.mastek.valuetracker.rolelog;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -7,10 +10,13 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.mastek.valuetracker.role.Role;
 
 
 
@@ -43,7 +49,6 @@ public class RoleHoursAPI {
 	public RoleHours addRoleHours(@BeanParam RoleHours newRoleHours) {
 		getRepository().save(newRoleHours);
 		return newRoleHours;
-		
 	}
 	
 	@DELETE
@@ -54,7 +59,18 @@ public class RoleHoursAPI {
 		getRepository().delete(deleteRoleHours);
 		return deleteRoleHours;
 	}
-	
-	
 
+	@Path("/findByRole")
+	@GET
+	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Double> findByRole(@QueryParam("skill") String skill) {
+    	List<Double> salaryList = new ArrayList<Double>();
+    	for (Double roles : getRepository().findByRole(skill)) {
+    		salaryList.add(roles);
+		}
+        return salaryList; 
+    }
+
+	
+	
 }

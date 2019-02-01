@@ -16,8 +16,6 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.mastek.booktraining.Person;
-import com.mastek.booktraining.Training;
 import com.mastek.valuetracker.profile.Profile;
 import com.mastek.valuetracker.profile.ProfileJPARepository;
 
