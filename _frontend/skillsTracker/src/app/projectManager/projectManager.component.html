@@ -1,5 +1,46 @@
 
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+        <h3>Little Fish</h3>
+        <p>Team consisting of 5 team members or less</p>
+        <button (click)="addNewTeamMemberPJ();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();">Add</button>
+    </div>
+    <div class="col-sm-4">
+      <h3>Cardboard Box</h3>
+      <p>Teams Consisting of 6-13 members</p>
+      <button (click)="addNewTeamMemberPJ();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();">Add</button>
+    </div>
+    <div class="col-sm-4">
+        <h3>Big Fish</h3>
+        <p>Teams of 14 members or more</p>
+        <button (click)="addNewTeamMemberPJ();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();addNewTeamMember();">Add</button>
+    </div>
 
+  </div>
+</div>
+
+<br>
+<table>
+    <tr>
+      <th>Role / Skill</th>
+      <th>Salary</th>
+      <th>Hourly Salary</th>
+      
+      <button (click)="addNewTeamMemberPJ()">Add Project Manager</button>
+      <button (click)="addNewTeamMember()">Add Team Member</button>
+    </tr>
+    <tr *ngFor="let tm of teamMembers; let i=index">
+      <td>{{tm.roleName}}</td>
+      <td>{{tm.salary}}</td>
+      <td>{{tm.hourlySalary}}</td>
+      <td><button (click)="deleteTeamMember(tm.roleId)">X</button></td>
+    </tr>
+  </table>
+
+<br>
+<p>------------------------------------------------------------------------------------------------------------------------------</p>
 <br>
   <form (submit)="addNewRoleLog({role:rol.value, hours:hrs.value})">
     <tr>
@@ -23,4 +64,3 @@
     </tr>
   </table>
   
-  <td><button (click)="ReturnCost">Calculate Cost</button></td>

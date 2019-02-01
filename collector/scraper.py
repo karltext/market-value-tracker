@@ -71,7 +71,7 @@ def getpage(pagenum):
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        '-o', '--out', help="ouput filepath", type=str, required=True)
+        '-o', '--out', help="ouput filepath", type=str)
     parser.add_argument(
         '-n', '--num', help="number of pages", type=int, default=324)
     parser.add_argument(
